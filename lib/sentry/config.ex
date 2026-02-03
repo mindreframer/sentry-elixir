@@ -436,47 +436,32 @@ defmodule Sentry.Config do
       for available options.
       """
     ],
-    hackney_opts:
-      [
-        type: :keyword_list,
-        default: [pool: :sentry_pool],
-        doc: """
-        Options to be passed to `hackney`. Only
-        applied if `:client` is set to `Sentry.HackneyClient`.
-        """
-      ] ++
-        if(Mix.env() == :test,
-          do: [],
-          else: [deprecated: "Use Finch as the default HTTP client instead."]
-        ),
-    hackney_pool_timeout:
-      [
-        type: :timeout,
-        default: 5000,
-        doc: """
-        The maximum time to wait for a
-        connection to become available. Only applied if `:client` is set to
-        `Sentry.HackneyClient`.
-        """
-      ] ++
-        if(Mix.env() == :test,
-          do: [],
-          else: [deprecated: "Use Finch as the default HTTP client instead."]
-        ),
-    hackney_pool_max_connections:
-      [
-        type: :pos_integer,
-        default: 50,
-        doc: """
-        The maximum number of
-        connections to keep in the pool. Only applied if `:client` is set to
-        `Sentry.HackneyClient`.
-        """
-      ] ++
-        if(Mix.env() == :test,
-          do: [],
-          else: [deprecated: "Use Finch as the default HTTP client instead."]
-        )
+    hackney_opts: [
+      type: :keyword_list,
+      default: [pool: :sentry_pool],
+      doc: """
+      Options to be passed to `hackney`. Only
+      applied if `:client` is set to `Sentry.HackneyClient`.
+      """
+    ],
+    hackney_pool_timeout: [
+      type: :timeout,
+      default: 5000,
+      doc: """
+      The maximum time to wait for a
+      connection to become available. Only applied if `:client` is set to
+      `Sentry.HackneyClient`.
+      """
+    ],
+    hackney_pool_max_connections: [
+      type: :pos_integer,
+      default: 50,
+      doc: """
+      The maximum number of
+      connections to keep in the pool. Only applied if `:client` is set to
+      `Sentry.HackneyClient`.
+      """
+    ]
   ]
 
   source_code_context_opts_schema = [
